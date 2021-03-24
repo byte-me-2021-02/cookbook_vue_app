@@ -11,9 +11,22 @@
     <button v-on:click="recipesCreate">Create the recipe</button>
     <div v-for="recipe in recipes">
       <p>{{ recipe.title }}</p>
+      <p><button v-on:click="recipesShow(recipe)">More info</button></p>
       <img v-bind:src="recipe.image_url">
       <hr>
     </div>
+    <dialog id="recipe-details">
+      <form method="dialog">
+        <h2>Here will be some info about the recipe</h2>
+        <p>Title: {{ currentRecipe.title }}</p>
+        <p>ingredients: {{ currentRecipe.ingredients }}</p>
+        <p>directions: {{ currentRecipe.directions }}</p>
+        <p>prep_time: {{ currentRecipe.prep_time }}</p>
+        <p>image_url: {{ currentRecipe.image_url }}</p>
+        <p>chef: {{ currentRecipe.chef }}</p>
+        <button>Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
@@ -36,7 +49,8 @@ export default {
       newRecipeIngredients: "",
       newRecipeDirections: "",
       newRecipePrepTime: "",
-      newRecipeImageUrl: "",      
+      newRecipeImageUrl: "",   
+      currentRecipe: {}   
     };
   },
   created: function() {
@@ -75,6 +89,12 @@ export default {
         this.newRecipePrepTime =  "";
         this.newRecipeImageUrl =  "";      
       });
+    },
+    recipesShow: function(theRecipe) {
+      console.log('showing recpie....')
+      console.log(theRecipe);
+      this.currentRecipe = theRecipe;
+      document.querySelector('#recipe-details').showModal();
     }
   }
 };
