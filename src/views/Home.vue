@@ -2,18 +2,36 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <h3>Make a recipe</h3>
-    <p>chef: <input type="text" v-model="newRecipeChef"></p>
-    <p>title: <input type="text" v-model="newRecipeTitle"></p>
-    <p>ingredients: <input type="text" v-model="newRecipeIngredients"></p>
-    <p>directions:<input type="text" v-model="newRecipeDirections"></p>
-    <p>prep time: <input type="text" v-model="newRecipePrepTime"></p>
-    <p>image url: <input type="text" v-model="newRecipeImageUrl"></p>
+    <p>
+      chef:
+      <input type="text" v-model="newRecipeChef" />
+    </p>
+    <p>
+      title:
+      <input type="text" v-model="newRecipeTitle" />
+    </p>
+    <p>
+      ingredients:
+      <input type="text" v-model="newRecipeIngredients" />
+    </p>
+    <p>
+      directions:
+      <input type="text" v-model="newRecipeDirections" />
+    </p>
+    <p>
+      prep time:
+      <input type="text" v-model="newRecipePrepTime" />
+    </p>
+    <p>
+      image url:
+      <input type="text" v-model="newRecipeImageUrl" />
+    </p>
     <button v-on:click="recipesCreate">Create the recipe</button>
     <div v-for="recipe in recipes">
       <p>{{ recipe.title }}</p>
       <p><button v-on:click="recipesShow(recipe)">More info</button></p>
-      <img v-bind:src="recipe.image_url">
-      <hr>
+      <img v-bind:src="recipe.image_url" />
+      <hr />
     </div>
     <dialog id="recipe-details">
       <form method="dialog">
@@ -37,7 +55,7 @@ img {
 </style>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data: function() {
@@ -49,17 +67,17 @@ export default {
       newRecipeIngredients: "",
       newRecipeDirections: "",
       newRecipePrepTime: "",
-      newRecipeImageUrl: "",   
-      currentRecipe: {}   
+      newRecipeImageUrl: "",
+      currentRecipe: {},
     };
   },
   created: function() {
-    console.log('in created');
+    console.log("in created");
     this.recipesIndex();
   },
   methods: {
     recipesIndex: function() {
-      console.log('in recipes index');
+      console.log("in recipes index");
       // get data from the api, then show that data to the user
       axios.get("http://localhost:3000/api/recipes").then(response => {
         console.log(response.data);
@@ -67,36 +85,35 @@ export default {
       });
     },
     recipesCreate: function() {
-      console.log('recipes create...')
+      console.log("recipes create...");
       // make a post request to the api
       console.log(this.newRecipeChef);
-      
+
       var params = {
         title: this.newRecipeTitle,
         ingredients: this.newRecipeIngredients,
         directions: this.newRecipeDirections,
         prep_time: this.newRecipePrepTime,
         image_url: this.newRecipeImageUrl,
-        chef: this.newRecipeChef
-      }
+        chef: this.newRecipeChef,
+      };
       axios.post("http://localhost:3000/api/recipes", params).then(response => {
         console.log(response.data);
         this.recipes.push(response.data);
-        this.newRecipeChef =  "";
-        this.newRecipeTitle =  "";
-        this.newRecipeIngredients =  "";
-        this.newRecipeDirections =  "";
-        this.newRecipePrepTime =  "";
-        this.newRecipeImageUrl =  "";      
+        this.newRecipeChef = "";
+        this.newRecipeTitle = "";
+        this.newRecipeIngredients = "";
+        this.newRecipeDirections = "";
+        this.newRecipePrepTime = "";
+        this.newRecipeImageUrl = "";
       });
     },
     recipesShow: function(theRecipe) {
-      console.log('showing recpie....')
+      console.log("showing recpie....");
       console.log(theRecipe);
       this.currentRecipe = theRecipe;
-      document.querySelector('#recipe-details').showModal();
-    }
-  }
+      document.querySelector("#recipe-details").showModal();
+    },
+  },
 };
 </script>
-
