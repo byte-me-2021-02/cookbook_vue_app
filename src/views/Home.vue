@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    {{ recipes }}
+    
+    <div v-for="recipe in recipes">
+      {{ recipe.title }}
+      <hr>
+    </div>
   </div>
 </template>
 
@@ -27,6 +31,7 @@ export default {
       // get data from the api, then show that data to the user
       axios.get("http://localhost:3000/api/recipes").then(response => {
         console.log(response.data);
+        this.recipes = response.data;
       });
     }
   }
