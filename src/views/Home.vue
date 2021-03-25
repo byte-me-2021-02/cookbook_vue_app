@@ -44,6 +44,7 @@
         <p>chef: <input type="text" v-model="currentRecipe.chef"></p>
         <button v-on:click="recipesUpdate(currentRecipe)">Update</button>
         <button>Close</button>
+        <button v-on:click="recipesDestroy(currentRecipe)">Destroy</button>
       </form>
     </dialog>
   </div>
@@ -119,7 +120,7 @@ export default {
         prep_time: theRecipe.prep_time,
         image_url: theRecipe.image_url,
       };
-      axios.patch("http://localhost:3000/api/recipes/" + theRecipe.id, params).then(response => {
+      axios.patch("/api/recipes/" + theRecipe.id, params).then(response => {
         console.log(response.data);
       })
     },
@@ -129,6 +130,14 @@ export default {
       this.currentRecipe = theRecipe;
       document.querySelector("#recipe-details").showModal();
     },
+    recipesDestroy: function(theRecipe) {
+      console.log(theRecipe);
+      axios.delete("/api/recipes/" + theRecipe.id).then(response => {
+        console.log(response.data);
+        var index = this.recipes.indexOf(theRecipe);      
+        this.recipes.splice(index, 1);        
+      })
+    }
   },
 };
 </script>
