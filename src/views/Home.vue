@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <!-- <h1>{{ errors }}</h1> -->
     <h3>Make a recipe</h3>
+    <!-- <ul> -->
+      <small v-for="error in errors">{{ error }} <br /></small>
+    <!-- </ul> -->
     <p>
       chef:
       <input type="text" v-model="newRecipeChef" />
@@ -71,6 +74,7 @@ export default {
       newRecipePrepTime: "",
       newRecipeImageUrl: "",
       currentRecipe: {},
+      errors: []
     };
   },
   created: function() {
@@ -108,6 +112,10 @@ export default {
         this.newRecipeDirections = "";
         this.newRecipePrepTime = "";
         this.newRecipeImageUrl = "";
+        this.errors = [];
+      }).catch(error => {
+        console.log(error.response.data.errors);
+        this.errors = error.response.data.errors;
       });
     },
     recipesUpdate: function(theRecipe) {
