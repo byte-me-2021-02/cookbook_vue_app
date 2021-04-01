@@ -39,12 +39,12 @@
     <dialog id="recipe-details">
       <form method="dialog">
         <h2>Here will be some info about the recipe</h2>
-        <p>Title: <input type="text" v-model="currentRecipe.title"></p>
-        <p>ingredients: <input type="text" v-model="currentRecipe.ingredients"></p>
-        <p>directions: <input type="text" v-model="currentRecipe.directions"></p>
-        <p>prep_time: <input type="text" v-model="currentRecipe.prep_time"></p>
-        <p>image_url: <input type="text" v-model="currentRecipe.image_url"></p>
-        <p>chef: <input type="text" v-model="currentRecipe.chef"></p>
+        <p>Title: {{currentRecipe.title}}</p>
+        <p>ingredients: {{currentRecipe.ingredients}}</p>
+        <p>directions: {{currentRecipe.directions}}</p>
+        <p>prep_time: {{currentRecipe.prep_time}}</p>
+        <p>image_url: {{currentRecipe.image_url}}</p>
+        <p>chef: {{currentRecipe.chef}}</p>
         <button v-on:click="recipesUpdate(currentRecipe)">Update</button>
         <button>Close</button>
         <button v-on:click="recipesDestroy(currentRecipe)">Destroy</button>
