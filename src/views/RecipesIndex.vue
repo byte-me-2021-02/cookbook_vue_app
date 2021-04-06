@@ -2,7 +2,8 @@
   <div class="recipes-index">
     <!-- recipes.each do |recipe| -->
     <div v-for="recipe in recipes">
-      {{ recipe.title }}
+      <router-link v-bind:to="`/recipes/${recipe.id}`">{{ recipe.title }}</router-link>
+      <!-- <router-link v-bind:to="'/recipes/' + recipe.id">{{ recipe.title }}</router-link> -->
       <hr >
     </div>
   </div>
