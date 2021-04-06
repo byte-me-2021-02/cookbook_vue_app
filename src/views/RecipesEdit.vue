@@ -82,10 +82,10 @@ export default {
         prep_time: this.prepTime,
       };
       axios
-        .post("/api/recipes", params)
+        .patch("/api/recipes/" + this.$route.params.id, params)
         .then(response => {
           console.log(response.data);
-          this.$router.push("/recipes");
+          this.$router.push(`/recipes/${this.$route.params.id}`);
         })
         .catch(error => {
           this.errors = error.response.data.errors;

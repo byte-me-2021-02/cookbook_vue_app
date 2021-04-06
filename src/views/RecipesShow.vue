@@ -10,7 +10,7 @@
     <p><b>chef:</b> {{ recipe.chef }}</p>
     <img v-bind:src="recipe.image_url">
     <br />
-    <!-- <router-link to="/recipes">All Recipes</router-link> -->
+    <router-link v-bind:to="`/recipes/${this.$route.params.id}/edit`">Edit recipe</router-link>
   </div>
 </template>
 
