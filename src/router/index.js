@@ -9,6 +9,7 @@ import Logout from '../views/Logout.vue'
 import RecipesIndex from '../views/RecipesIndex.vue'
 import RecipesNew from '../views/RecipesNew.vue'
 import RecipesShow from '../views/RecipesShow.vue'
+import RecipesEdit from '../views/RecipesEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,11 @@ const routes = [
     path: '/recipes/:id',
     name: 'RecipesShow',
     component: RecipesShow
+  },
+  {
+    path: '/recipes/:id/edit',
+    name: 'RecipesEdit',
+    component: RecipesEdit
   },
   {
     path: '/signup',
