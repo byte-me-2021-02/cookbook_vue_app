@@ -11,6 +11,8 @@
     <img v-bind:src="recipe.image_url">
     <br />
     <router-link v-bind:to="`/recipes/${this.$route.params.id}/edit`">Edit recipe</router-link>
+    <br />
+    <button v-on:click="deleteRecipe()">Delete the recipe</button>
   </div>
 </template>
 
@@ -36,7 +38,15 @@ export default {
       this.recipe = response.data;
     })
   },
-  methods: {}
+  methods: {
+    deleteRecipe: function() {
+      console.log('deleting recipe...');
+      axios.delete(`/api/recipes/${this.$route.params.id}`).then(response => {
+        console.log(response.data);
+        this.$router.push("/recipes")
+      })
+    }
+  }
 };
   // show the image
   // link from this page to the index page
