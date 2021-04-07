@@ -1,11 +1,24 @@
 <template>
   <div class="recipes-index">
     <!-- recipes.each do |recipe| -->
-    <div v-for="recipe in recipes">
-      <router-link v-bind:to="`/recipes/${recipe.id}`">{{ recipe.title }}</router-link>
-      <!-- <router-link v-bind:to="'/recipes/' + recipe.id">{{ recipe.title }}</router-link> -->
-      <hr >
-    </div>
+    <br />
+      
+    <div class="row">
+      <div class="col-sm-4" v-for="recipe in recipes">
+        <div class="card">
+           <img style="width: 200px" v-bind:src="recipe.image_url" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <br />
+        <br />
+      </div>
+      
+    </div>    
+    
   </div>
 </template>
 
