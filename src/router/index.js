@@ -10,6 +10,7 @@ import RecipesIndex from '../views/RecipesIndex.vue'
 import RecipesNew from '../views/RecipesNew.vue'
 import RecipesShow from '../views/RecipesShow.vue'
 import RecipesEdit from '../views/RecipesEdit.vue'
+import RecipesRandom from '../views/RecipesRandom.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/recipes',
     name: 'RecipesIndex',
     component: RecipesIndex
+  },
+  {
+    path: '/recipes/random',
+    name: 'RecipesRandom',
+    component: RecipesRandom
   },
   {
     path: '/recipes/new',
