@@ -19,10 +19,10 @@
                 Authentication
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/login">Login</a></li>
-                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <li v-if="!isLoggedIn()"><a class="dropdown-item" href="/login">Login</a></li>
+                <li v-if="isLoggedIn()"><a class="dropdown-item" href="/logout">Logout</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/signup">Signup here</a></li>
+                <li v-if="!isLoggedIn()"><a class="dropdown-item" href="/signup">Signup here</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -38,12 +38,18 @@
     </nav>    
     
     <div class="container">
+      <p v-if="isLoggedIn()">I am logged in</p>
       <router-view/>
     </div>
   </div>
 </template>
 
 <style>
+#app {
+  background-image: url('./assets/purty_wood.png');
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+
+}
 
 
 /* #app {
@@ -67,3 +73,18 @@
   color: #42b983;
 } */
 </style>
+
+<script>
+  export default {
+    methods: {
+      isLoggedIn: function() {
+        console.log('logged in');
+        if (localStorage.getItem("jwt")) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+</script>
