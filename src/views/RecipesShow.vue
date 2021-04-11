@@ -8,11 +8,16 @@
     <p><b>prep time:</b> {{ recipe.prep_time }}</p>
     <p><b>image url:</b> {{ recipe.image_url }}</p>
     <p><b>chef:</b> {{ recipe.chef }}</p>
+    <p><b>user_id:</b> {{ recipe.user_id }}</p>
     <img v-bind:src="recipe.image_url">
     <br />
-    <router-link v-bind:to="`/recipes/${this.$route.params.id}/edit`">Edit recipe</router-link>
-    <br />
-    <button v-on:click="deleteRecipe()">Delete the recipe</button>
+    <p>recipe.user_id: {{ recipe.user_id }}</p>
+    <p>$parent.getUserId(): {{ $parent.getUserId() }}</p>
+    <div v-if="recipe.user_id == $parent.getUserId()">
+      <router-link v-bind:to="`/recipes/${this.$route.params.id}/edit`">Edit recipe</router-link>
+      <br />
+      <button v-on:click="deleteRecipe()">Delete the recipe</button>
+    </div>
   </div>
 </template>
 

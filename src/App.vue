@@ -39,6 +39,7 @@
     
     <div class="container">
       <p v-if="isLoggedIn()">I am logged in</p>
+      <p>User Id: {{ getUserId() }}</p>
       <router-view/>
     </div>
   </div>
@@ -84,6 +85,9 @@
         } else {
           return false;
         }
+      },
+      getUserId: function() {
+        return localStorage.getItem("user_id");
       }
     }
   }
