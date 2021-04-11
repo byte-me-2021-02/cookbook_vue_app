@@ -65,7 +65,7 @@ export default {
       // this.title = response.data.title;
       this.recipe = response.data;
       // this.recipe = response.data;
-    })
+    })    
   },
   methods: {
     submit: function() {
