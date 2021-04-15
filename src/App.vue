@@ -46,11 +46,11 @@
 </template>
 
 <style>
-#app {
+/* #app {
   background-image: url('./assets/purty_wood.png');
   font-family: Futura,"Trebuchet MS",Arial,sans-serif;
 
-}
+} */
 
 
 /* #app {
