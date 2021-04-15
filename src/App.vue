@@ -1,47 +1,121 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/recipes">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/recipes/new">New Recipe</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Authentication
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li v-if="!isLoggedIn()"><a class="dropdown-item" href="/login">Login</a></li>
-                <li v-if="isLoggedIn()"><a class="dropdown-item" href="/logout">Logout</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li v-if="!isLoggedIn()"><a class="dropdown-item" href="/signup">Signup here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>    
-    
-    <div class="container">
-      <p v-if="isLoggedIn()">I am logged in</p>
-      <p>User Id: {{ getUserId() }}</p>
-      <router-view/>
-    </div>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+									</ul>
+								</header>
+
+                <router-view />
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="/recipes">Homepage</a></li>
+										<li><a href="/recipes/new">Make a new recipe</a></li>
+										<li><a href="elements.html">Elements</a></li>
+										<li>
+											<span class="opener">Submenu</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Etiam Dolore</a></li>
+										<li><a href="#">Adipiscing</a></li>
+										<li>
+											<span class="opener">Another Submenu</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Maximus Erat</a></li>
+										<li><a href="#">Sapien Mauris</a></li>
+										<li><a href="#">Amet Lacinia</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Ante interdum</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+										<li class="icon solid fa-phone">(000) 000-0000</li>
+										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>   
   </div>
 </template>
 
